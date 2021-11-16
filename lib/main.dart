@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:learning_get/Screen/home.dart';
+import 'package:learning_get/Screen/next_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,50 +14,54 @@ class MyApp extends StatelessWidget {
     //if only state management is required then MaterialApp will be do good
     //for additional purposes of get we need GetMaterialApp(without using context)
     return GetMaterialApp(
-        title: 'bottom sheet',
+        title: 'navigation',
+        initialRoute: '/',
+        defaultTransition: Transition.zoom,
+        getPages: [
+          GetPage(name: '/', page: () => MyApp()),
+          GetPage(name: '/home', page: () => Home()),
+          // GetPage(
+          //     name: '/nextScreen',
+          //     page: () => NextScreen(),
+          //     //to control transition root wise
+          //     // if specified will override default transition
+          //     transition: Transition.leftToRight),
+
+          //passing parameters in routes
+          GetPage(
+              name: '/nextScreen/:someValue',
+              page: () => NextScreen(),
+              //to control transition root wise
+              // if specified will override default transition
+              transition: Transition.leftToRight),
+        ],
+        unknownRoute: GetPage(name: '/notfound', page: () => Home()),
         home: Scaffold(
           appBar: AppBar(
-            title: Text('bottom sheet'),
+            title: Text('navigation'),
           ),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 ElevatedButton(
-                  child: Text('show bottom sheet'),
-                  onPressed: () {
-                    Get.bottomSheet(
-                        Container(
-                          child: Wrap(
-                            children: <Widget>[
-                              ListTile(
-                                leading: Icon(Icons.wb_sunny_outlined),
-                                title: Text('Light theme'),
-                                onTap: () =>
-                                    {Get.changeTheme(ThemeData.light())},
-                              ),
-                              ListTile(
-                                leading: Icon(Icons.wb_sunny),
-                                title: Text('Dark theme'),
-                                onTap: () => {
-                                  Get.changeTheme(ThemeData.dark()),
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                        barrierColor: Colors.greenAccent.shade100,
-                        backgroundColor: Colors.purple,
-                        isDismissible: true,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            side: BorderSide(
-                                color: Colors.white,
-                                style: BorderStyle.solid,
-                                width: 2.0)),
-                        enableDrag: false);
-                  },
-                )
+                    child: Text('go to home'),
+                    onPressed: () {
+                      // Get.toNamed("/home");
+
+                      //navigating to undefined name page
+                      Get.toNamed("/x");
+
+                      //Go to home screen but cannot return previous screen
+                      // Get.offNamed("/home");
+
+                      //Go to home screen and cancel all previous routes/screens
+                      // Get.offAllNamed("/home");
+
+                      //Dynamic URL;can pass parameters
+                      // Get.toNamed(
+                      //     "/home?channel=Ripples Code&content=Flutter GetX ");
+                    })
               ],
             ),
           ),
