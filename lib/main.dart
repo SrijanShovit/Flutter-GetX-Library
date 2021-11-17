@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:learning_get/CustomClasses/messages.dart';
 
 import 'package:learning_get/CustomClasses/my_controller4.dart';
 
@@ -15,27 +16,32 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        title: 'Workers',
+        translations: Messages(),
+        locale: Locale('en',
+            'US'), //default locale //to get device locale : Get.deviceLocale
+        fallbackLocale: Locale('en', 'US'),
+        title: 'Internationalisation',
         home: Scaffold(
           appBar: AppBar(
-            title: Text('Workers'),
+            title: Text('Internationalisation'),
           ),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text('hello'.tr),
                 SizedBox(height: 20),
                 ElevatedButton(
-                    child: Text('Increment'),
-                    onPressed: () => myController.increment()),
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: TextField(
-                    onChanged: (val) {
-                      myController.increment();
-                    },
-                  ),
-                )
+                    child: Text('Hindi'),
+                    onPressed: () => myController.changeLanguage('hi', 'IN')),
+                SizedBox(height: 20),
+                ElevatedButton(
+                    child: Text('French'),
+                    onPressed: () => myController.changeLanguage('fr', 'FR')),
+                SizedBox(height: 20),
+                ElevatedButton(
+                    child: Text('English'),
+                    onPressed: () => myController.changeLanguage('en', 'US')),
               ],
             ),
           ),
