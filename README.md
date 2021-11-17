@@ -11,3 +11,5 @@ Implemented these using GetX library of Flutter :
 7. Reactive State Manager - GetX with Controller Type
 8. Simple State Manager- GetBuilder
 9. GetXController Lifecycle methods
+10.Workers
+11.Internationalization
