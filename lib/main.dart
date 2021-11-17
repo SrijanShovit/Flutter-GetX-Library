@@ -7,40 +7,35 @@ void main() {
   runApp(MyApp());
 }
 
+//Workers generate some specific callbacks whenever some task is done
+
 class MyApp extends StatelessWidget {
   MyController4 myController = Get.put(MyController4());
 
   @override
   Widget build(BuildContext context) {
-    //if only state management is required then MaterialApp will be do good
-    //for additional purposes of get we need GetMaterialApp(without using context)
     return GetMaterialApp(
-        title: 'Unique ID',
+        title: 'Workers',
         home: Scaffold(
           appBar: AppBar(
-            title: Text('Unique ID'),
+            title: Text('Workers'),
           ),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GetBuilder<MyController4>(
-                  id: 'txtCount',
-                  builder: (controller) {
-                    return Text("Count is ${controller.count}");
-                  },
-                ),
-                GetBuilder<MyController4>(
-                  builder: (controller) {
-                    return Text("Count is ${controller.count}");
-                  },
-                ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                    onPressed: () {
+                    child: Text('Increment'),
+                    onPressed: () => myController.increment()),
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: TextField(
+                    onChanged: (val) {
                       myController.increment();
                     },
-                    child: Text('Increment'))
+                  ),
+                )
               ],
             ),
           ),
