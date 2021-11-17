@@ -6,11 +6,7 @@ import 'package:learning_get/CustomClasses/student.dart';
 import 'package:learning_get/Screen/home.dart';
 import 'package:learning_get/Screen/next_screen.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class ControllerType extends StatelessWidget {
   //if init property is not used in GetX<Type of Controller> then
   //create instance of controller as follows
   MyController2 my_controller = Get.put(MyController2());
