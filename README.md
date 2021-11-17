@@ -14,3 +14,4 @@ Implemented these using GetX library of Flutter :
 10. GetX Unique ID
 11. GetX Workers
 12. Internationalization
+13. Dependecy Injection Get.put - Get.lazyPut - Get.putAsync - Get.create
