@@ -12,7 +12,7 @@ class MyController4 extends GetxController {
     //called everytime when value of count variable is changed
     // ever(count, (_) => print(count));
 
-    //called everytime when value of any variable in the list is changed
+    // called everytime when value of any variable in the list is changed
     // everAll([count], (_) => print(count));
 
     //called only once when value of count variable is changed
