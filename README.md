@@ -13,3 +13,4 @@ Implemented these using GetX library of Flutter :
 9. GetXController Lifecycle methods  -- didn't give proper result
 10. GetX Unique ID
 11. GetX Workers
+12. Internationalization
