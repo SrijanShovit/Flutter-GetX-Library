@@ -7,7 +7,6 @@ void main() {
   runApp(MyApp());
 }
 
-//Workers generate some specific callbacks whenever some task is done
 
 class MyApp extends StatelessWidget {
   // MyController4 myController = Get.put(MyController4(),
